@@ -1,0 +1,5 @@
+C:\Users\Ruben\Documents\Visual Studio 2012\Projects\HelloWorld\HelloWorld\bin\HelloWorld.dll
+C:\Users\Ruben\Documents\Visual Studio 2012\Projects\HelloWorld\HelloWorld\bin\HelloWorld.pdb
+C:\Users\Ruben\Documents\Visual Studio 2012\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Visual Studio 2012\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.dll
+C:\Users\Ruben\Documents\Visual Studio 2012\Projects\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
