@@ -1,0 +1,68 @@
+﻿@model MvcNov17.Models.Client
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ajouter</title>
+    <style type="text/css">
+        .field-validation-error, .validation-summary-errors {
+            color: #f00;
+        }
+
+        .input-validation-error {
+            outline: 1px solid #f00;
+        }
+    </style>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div> 
+       
+            @{Html.BeginForm(actionName: "ajouter", controllerName: "client", method: FormMethod.Post); }
+               @Html.LabelFor(model => model.Id) @Html.EditorFor(model=>model.Id) @Html.ValidationMessageFor(model => model.Id)<br />
+               @Html.LabelFor(model => model.Nom) @Html.EditorFor(model => model.Nom) @Html.ValidationMessageFor(model => model.Nom)<br />
+               @Html.LabelFor(model => model.Prenom) :
+            @Html.EditorFor(model => model.Prenom) 
+            @Html.ValidationMessageFor(model => model.Prenom)<br />
+               @Html.LabelFor(model => model.DateNaissance) @Html.EditorFor(model => model.DateNaissance)<br />
+               <button type="submit">Créer</button>
+            @{Html.EndForm(); }
+        <button type="button">Test</button>
+        <script type="text/javascript">
+            $("button[type='button']").click(
+                function() {
+                    console.log($("input#Id").val());
+                }
+            );
+            $("form").submit(function (event) {
+                if ($("#Prenom").val().toUpperCase() == 'NORRIS') {
+                    var s = $("span[data-valmsg-for='Prenom']")[0];
+                    $(s).remove();
+                    var st = s.outerHTML;
+                    $(st.replace("Prenom", "_Prenom")
+                        .replace("field-validation-valid", "field-validation-error"))
+                        .text('essaie Maurice!').insertAfter($("#Prenom"));
+                    event.preventDefault();
+                }
+            });
+            $("form").validate({
+                rules: {
+                    Prenom: {
+                        required: true
+                    },
+                },
+                messages: {
+                    Prenom: "Veuillez fournir un prénom"
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

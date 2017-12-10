@@ -1,0 +1,60 @@
+﻿@model MvcNov17.Models.Client
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editer</title>
+    <style type="text/css">
+        .field-validation-error , .validation-summary-errors {
+            color: #f00;
+        }
+         .input-validation-error {
+            outline: 1px solid #f00;
+        }
+    </style>
+
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $.validator.addMethod("antichuck", function (value, element, params) {
+                return value.toUpperCase()!="CHUCK";
+            }
+        );
+        $.validator.unobstrusive.adapters.add("antichuck", [],
+            function (options) {
+                options.rules["antichuck"] = options.params;
+                options.messages["antichuck"] = options.message;
+            }
+        );
+    </script>
+  
+   </head>
+<body>
+    <div> 
+        @using (Html.BeginForm(actionName: "editer", controllerName: "client", method: FormMethod.Post))
+        {
+        @Html.LabelFor(model => model.Id)
+        @: :
+        @Html.DisplayFor(model => model.Id)<br />
+        @Html.LabelFor(model => model.Nom)
+        @: :
+        @Html.EditorFor(model => model.Nom) @Html.ValidationMessageFor(model => model.Nom,"*")<br />
+        @Html.LabelFor(model => model.Prenom)
+        @: :
+        @Html.EditorFor(model => model.Prenom) @Html.ValidationMessageFor(model => model.Prenom, "*")<br />
+        @Html.LabelFor(model => model.DateNaissance)
+        @: :
+        @Html.TextBox("Birthday", @Model.DateNaissance,"{0:dd/MM/yyyy }") @Html.ValidationMessage("DateNaissance", "*")<br />
+        <button type="submit">MAJ</button>
+        @Html.ValidationSummary()
+        }
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿@model MvcNov17.Models.Client
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Affichage du client</title>
+</head>
+<body>
+    <div> 
+        Client @Model.Id
+    </div>
+    nom : @Model.Nom <br>
+    prenom : @Model.Prenom <br>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model List<MvcNov17.Models.Client>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste des clients</title>
+</head>
+<body>
+    <h2>Liste des clients</h2>
+    <div> 
+        <ul>
+            @{ 
+                foreach (MvcNov17.Models.Client client in @Model)
+                {
+                    <li>@client.Id : @Html.Raw(@client.Nom), @client.Prenom - 
+                    @(@client.DateNaissance!=null ? 
+                        @client.DateNaissance.ToShortDateString() :"pas né!?")
+                    <a href="~/client/afficher/@client.Id">voir</a>
+                    <a href="~/client/supprimer/@client.Id">supprimer</a>
+                    <a href="~/client/editer/@client.Id">editer</a>
+                </li>
+                }
+            }
+        </ul>
+        <a href="~/client/ajouter">Ajouter</a>
+    </div>
+</body>
+</html>
